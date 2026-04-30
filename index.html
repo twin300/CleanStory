@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CleanStory - клининговые услуги в Рыбинске. Уборка квартир, домов, офисов, химчистка и мойка окон."
+    />
+    <title>CleanStory - клининговые услуги в Рыбинске</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topbar container">
+        <a class="brand" href="#top" aria-label="CleanStory">
+          <img class="header-logo" src="logopng.png" alt="CleanStory cleaning service" />
+        </a>
+        <nav class="main-nav" aria-label="Основная навигация">
+          <a href="#calculator">Стоимость</a>
+          <a href="#services">Что входит</a>
+          <a href="#results">Работы</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#faq">Вопросы</a>
+        </nav>
+        <div class="header-actions">
+          <span class="city">Рыбинск</span>
+          <a class="phone" href="tel:+74855555555">+7 (4855) 55-55-55</a>
+        </div>
+        <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="order">
+        <div class="container hero-head">
+          <div>
+            <p class="eyebrow">Сервис профессиональной уборки</p>
+            <h1>Клининговые услуги в <span>Рыбинске</span></h1>
+          </div>
+          <div class="rating-card" aria-label="Рейтинг компании">
+            <strong>4,9</strong>
+            <span class="stars">★★★★★</span>
+            <small>по отзывам клиентов CleanStory</small>
+          </div>
+        </div>
+        <div class="hero-media">
+          <div class="container hero-grid">
+            <form class="calculator-card" id="calculator">
+              <div class="field">
+                <span class="field-label">Количество комнат</span>
+                <div class="stepper" data-stepper="rooms">
+                  <button class="stepper-button" type="button" data-direction="-1" aria-label="Предыдущий вариант комнат">‹</button>
+                  <output name="rooms" data-value="rooms">1-комнатная</output>
+                  <button class="stepper-button" type="button" data-direction="1" aria-label="Следующий вариант комнат">›</button>
+                </div>
+              </div>
+              <div class="field">
+                <span class="field-label">Тип уборки</span>
+                <div class="stepper" data-stepper="type">
+                  <button class="stepper-button" type="button" data-direction="-1" aria-label="Предыдущий тип уборки">‹</button>
+                  <output name="type" data-value="type">Регулярная <span class="hint">?</span></output>
+                  <button class="stepper-button" type="button" data-direction="1" aria-label="Следующий тип уборки">›</button>
+                </div>
+              </div>
+              <label>
+                Номер телефона
+                <input type="tel" placeholder="+7 (___) ___-__-__" />
+              </label>
+              <div class="price-block">
+                <div class="price">от <strong data-price>2 950 ₽</strong></div>
+                <button class="pill primary" type="submit">Заказать</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="counter container">
+        <div class="digits" aria-label="Убрано квадратных метров">
+          <span>7</span><span>1</span><span>8</span><span>2</span><span>2</span><span>4</span>
+          <strong>м²</strong>
+        </div>
+        <p>Квартир и домов убрано нашими клинерами</p>
+      </section>
+
+      <section class="included section-band" id="services">
+        <div class="container included-matrix">
+          <div class="matrix-top">
+            <p>Что входит в уборку</p>
+          </div>
+          <div class="zone-tabs" role="tablist" aria-label="Помещение">
+            <button class="active" type="button" data-zone="rooms" aria-selected="true">Комнаты</button>
+            <button type="button" data-zone="kitchen" aria-selected="false">Кухня</button>
+            <button type="button" data-zone="bathroom" aria-selected="false">Ванная</button>
+            <button type="button" data-zone="hall" aria-selected="false">Прихожая</button>
+          </div>
+          <div class="matrix-table" role="table" aria-label="Что входит в разные типы уборки">
+            <div class="matrix-row matrix-head" role="row">
+              <span role="columnheader"></span>
+              <span role="columnheader">Регулярная</span>
+              <span role="columnheader">Генеральная</span>
+              <span role="columnheader">После ремонта</span>
+            </div>
+            <div class="matrix-scroll">
+              <div class="matrix-body" data-matrix-body></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="extras container" id="extras">
+        <h2>Дополнительно можно добавить</h2>
+        <div class="extras-grid">
+          <article>
+            <span>▣</span><strong>Помыть холодильник внутри</strong><a href="#order">Подробнее →</a>
+            <div class="extra-hover"><p>Клинер разгрузит продукты, вымоет полки и вернет все обратно.</p><b>590 ₽</b></div>
+          </article>
+          <article>
+            <span>□</span><strong>Помыть окна</strong><a href="#order">Подробнее →</a>
+            <div class="extra-hover"><p>Вымоем стекла, рамы и подоконники с двух сторон.</p><b>от 450 ₽</b></div>
+          </article>
+          <article>
+            <span>♨</span><strong>Помыть люстру</strong><a href="#order">Подробнее →</a>
+            <div class="extra-hover"><p>Аккуратно снимем пыль с плафонов, подвесов и основания.</p><b>690 ₽</b></div>
+          </article>
+          <article>
+            <span>⌁</span><strong>Заехать за ключами</strong><a href="#order">Подробнее →</a>
+            <div class="extra-hover"><p>Заберем ключи в удобном месте и вернем после уборки.</p><b>390 ₽</b></div>
+          </article>
+          <article>
+            <span>◒</span><strong>Погладить вещи</strong><a href="#order">Подробнее →</a>
+            <div class="extra-hover"><p>Погладим одежду, белье или текстиль после уборки.</p><b>от 490 ₽</b></div>
+          </article>
+          <article>
+            <span>▤</span><strong>Поменять постельное белье</strong><a href="#order">Подробнее →</a>
+            <div class="extra-hover"><p>Снимем старое белье и аккуратно застелим свежий комплект.</p><b>290 ₽</b></div>
+          </article>
+          <article>
+            <span>▥</span><strong>Помыть духовку</strong><a href="#order">Подробнее →</a>
+            <div class="extra-hover"><p>Удалим жир и нагар внутри духовки профессиональным средством.</p><b>790 ₽</b></div>
+          </article>
+          <article>
+            <span>▧</span><strong>Помыть СВЧ</strong><a href="#order">Подробнее →</a>
+            <div class="extra-hover"><p>Очистим микроволновку внутри и снаружи без резкого запаха.</p><b>390 ₽</b></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="reviews section-band" id="reviews">
+        <div class="container">
+          <h2>Честная оценка 4.9 <span class="stars">★★★★★</span><br />на основе многих отзывов</h2>
+          <div class="trust-box">
+            <div><strong>01</strong><b>Наши клинеры отлично убирают</b><p>Мы проводим обучение, даем регламенты и проверяем качество.</p></div>
+            <div><strong>02</strong><b>Все клинеры проходят тестовую уборку</b><p>На объект выходит только подготовленный специалист.</p></div>
+            <div><strong>03</strong><b>Централизованный парк средств</b><p>Клинер привозит инвентарь и химию с собой.</p></div>
+          </div>
+          <div class="review-carousel" data-review-carousel>
+            <button class="review-nav prev" type="button" data-review-prev aria-label="Предыдущий отзыв">←</button>
+            <div class="review-viewport">
+              <div class="review-row" data-review-track>
+                <article><span class="stars">★★★★★</span><h3>Марина</h3><p>Спасибо за добротную работу. Уборка кухни всегда очень хлопотное дело, мастер Ольга справилась на отлично, отгенералила все, подарком мытье окна, что порадовало очень.</p></article>
+                <article><span class="stars">★★★★★</span><h3>Мария</h3><p>Прекрасная уборка, вымыли все очень хорошо. Ребята вежливые, на выезд приехали тоже быстро, в удобное мне время. Спасибо, обращусь к вам еще!</p></article>
+                <article><span class="stars">★★★★★</span><h3>Лена</h3><p>Данную фирму рекомендую всем! Быстро, аккуратно и очень чисто! Совсем не дорого! Вежливый работник фирмы! Я очень довольна!</p></article>
+                <article><span class="stars">★★★★★</span><h3>Юля</h3><p>Благодарю компанию за уборку! Потребовалось отмыть то, что собственными силами не получалось. Справились на отлично, вежливый и коммуникабельный персонал, профессиональное оборудование, качественно!</p></article>
+                <article><span class="stars">★★★★★</span><h3>Владислав</h3><p>Отличный сервис - быстро, аккуратно и профессионально. Команда справилась с уборкой гораздо лучше, чем ожидали: все сверкает, никаких запахов химии. Особенно радует, что средства безопасны для детей и животных.</p></article>
+              </div>
+            </div>
+            <button class="review-nav next" type="button" data-review-next aria-label="Следующий отзыв">→</button>
+          </div>
+          <div class="center"><a class="pill primary" href="https://vk.com/reviews-232534933" target="_blank" rel="noopener">Смотреть все отзывы</a></div>
+        </div>
+      </section>
+
+      <section class="results container" id="results">
+        <h2>Взгляните на результаты нашей работы</h2>
+        <p class="lead">Реальные фото до и после уборки: окна, офисные помещения, кухня, санузел и жилые комнаты.</p>
+        <div class="work-carousel" data-work-carousel>
+          <div class="work-stage">
+            <button class="work-nav prev" type="button" data-work-prev aria-label="Предыдущее фото">←</button>
+            <div class="work-slides" data-work-slides aria-live="polite">
+              <figure class="work-slide active">
+                <img src="до-после/M3W1Ktq3UMU7Xq5cCM1bSY-8vrrsZ5sqmsYzGWPvyFGq1o2LAamT9HKnFQ1VX5Wdbf9omtlSrRUOit2mXLtpjERH.jpg" alt="Мойка окон до и после" />
+              </figure>
+              <figure class="work-slide">
+                <img src="до-после/OBelmFCKEeO8eIK27WzhtpRFZ_rnF_YBTSxEoi475Z6E9MkvOqv9igiCk24BkEUzMz-dvI7AvtFMi3kNuTvh-x4q.jpg" alt="Офисное помещение до и после уборки" />
+              </figure>
+              <figure class="work-slide">
+                <img src="до-после/C2XDkccsmVnlrxC0_l-5SsKc0IiiKwChm2mHtBLJ3XklaTURRDuriJ3yyBCfqZlgQhwE-2U3svjAXh4vCPvnvPoa.jpg" alt="Рабочая зона офиса до и после уборки" />
+              </figure>
+              <figure class="work-slide">
+                <img src="до-после/_RQHBBNk0LyWApmPSPu6qh85b82PgfbZjUvTSGia5eiqnYtlVrrJ1MnMaMDpS9meezegtJUFj3O0fthMKBeTFZn0.jpg" alt="Плита до и после чистки" />
+              </figure>
+              <figure class="work-slide">
+                <img src="до-после/9xFch_1F6GbKGuCxh-wbUBv20oVawV53QII7nMomMwSchsdsxpJvXW6mrajl_2ltiQzwhzp8TdGq5QfZwJeg1WGl.jpg" alt="Комната до и после уборки" />
+              </figure>
+              <figure class="work-slide">
+                <img src="до-после/4ckT_8sQioqM8lZuGzElGKWQVk1yGD_Bz_d6yQ2MKumkfFzlB_3u2xCaV6EWSH9kMxUQtyCGyEGe8W0uCpM-8cLA.jpg" alt="Кухня до и после уборки" />
+              </figure>
+            </div>
+            <button class="work-nav next" type="button" data-work-next aria-label="Следующее фото">→</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="photo-price section-band">
+        <div class="container split">
+          <div>
+            <h2>Узнайте цену по фото с точностью 99%</h2>
+            <p>Пришлите нам фото помещения и комментарии, а мы скажем цену до начала работ.</p>
+            <div class="messengers">
+              <a href="https://t.me/chistorbk" target="_blank" rel="noopener" aria-label="Telegram CleanStory">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 4.2 18.3 20c-.2.9-.9 1.1-1.6.7l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.4-5 9.2-8.3c.4-.4-.1-.6-.6-.2L6.2 13.5 1.3 12c-.9-.3-.9-1 0-1.4L20.1 3.4c.9-.3 1.7.2 1.5.8Z"/></svg>
+                Telegram
+              </a>
+              <a href="https://vk.com/chistorbk?act=s&amp;id=232534933" target="_blank" rel="noopener" aria-label="ВКонтакте CleanStory">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17c-5.3 0-8.4-3.7-8.5-9.8h2.7c.1 4.5 2.1 6.4 3.6 6.8V7.2h2.5v3.9c1.5-.2 3-2 3.5-3.9h2.5c-.4 2.3-2.2 4.1-3.4 4.9 1.2.7 3.2 2.2 4 4.9h-2.8c-.6-1.8-1.9-3.2-3.8-3.4V17H13Z"/></svg>
+                ВКонтакте
+              </a>
+            </div>
+          </div>
+          <div class="photo-price-visual">
+            <img src="photo-price.png.png" alt="Расчет стоимости уборки по фото в чате CleanStory" />
+          </div>
+        </div>
+      </section>
+
+      <section class="safe section-band">
+        <div class="container split">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80" alt="Клинер с инвентарем" />
+          <div>
+            <h2>С нами безопасно</h2>
+            <div class="safe-grid">
+              <article><b>Работаем с проверенными клинерами</b></article>
+              <article><b>Оплата после уборки</b></article>
+              <article><b>Гарантируем качество уборки</b></article>
+              <article><b>Выполним особые поручения</b></article>
+              <article><b>Выезжаем в любой район города</b></article>
+              <article><b>Выполним уборку день-в-день</b></article>
+            </div>
+            <a class="pill primary" href="#order">Узнать стоимость</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog container" id="offices">
+        <h2>Профессиональная уборка в Рыбинске</h2>
+        <div class="service-grid">
+          <article><img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=700&q=80" alt="Кухня" /><span>от 2 950 ₽</span><h3>Регулярная уборка квартир</h3><p>Поддерживающая уборка во всех помещениях квартиры.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=700&q=80" alt="Генеральная уборка" /><span>от 6 250 ₽</span><h3>Генеральная уборка</h3><p>Тщательно убираем все помещения и трудные зоны.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80" alt="Офис" /><span>от 8 550 ₽</span><h3>Уборка после ремонта</h3><p>Убираем строительную пыль и следы материалов.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=80" alt="Офисное пространство" /><span>от 7 500 ₽</span><h3>Уборка офисов</h3><p>Чистота рабочих зон, переговорных и санузлов.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=700&q=80" alt="Коттедж" /><span>от 6 000 ₽</span><h3>Уборка домов и коттеджей</h3><p>Выездная команда для больших помещений.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80" alt="Диван" /><span>от 1 900 ₽</span><h3>Химчистка мягкой мебели</h3><p>Удаляем пятна и запахи профессиональным оборудованием.</p></article>
+        </div>
+      </section>
+
+      <section class="rooms section-band">
+        <div class="section-head container compact">
+          <h2>Закажите клининг отдельных помещений</h2>
+          <div class="arrows"><button type="button">←</button><button type="button">→</button></div>
+        </div>
+        <div class="room-strip">
+          <article><img src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=500&q=80" alt="Спальня" /><h3>Уборка спальни</h3><p>Заправляем кровать, протираем пыль, пылесосим.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=500&q=80" alt="Кухня" /><h3>Уборка кухни</h3><p>Моем плиту, раковину, столешницы и фасады.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=500&q=80" alt="Ванная" /><h3>Уборка ванной</h3><p>Натираем сантехнику, зеркала и кафель.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="Гостиная" /><h3>Уборка гостиной</h3><p>Пылесосим ковры, моем полы и поверхности.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=500&q=80" alt="Детская" /><h3>Уборка детской</h3><p>Аккуратно раскладываем вещи и игрушки.</p></article>
+        </div>
+      </section>
+
+      <section class="steps container" id="steps">
+        <div class="steps-head">
+          <div>
+            <p class="eyebrow">4 шага на пути к чистому дому</p>
+            <h2>Как заказать уборку в Рыбинске</h2>
+          </div>
+          <p class="lead">Клинер приезжает с инвентарем и профессиональными средствами, а вы оцениваете результат после завершения работ.</p>
+        </div>
+        <div class="step-grid">
+          <article><span>01</span><h3>Заявка</h3><p>Оставьте заявку на сайте или позвоните. Уточним площадь, тип уборки и удобное время.</p></article>
+          <article><span>02</span><h3>Подтверждение</h3><p>Согласуем стоимость, состав работ и подберем свободного специалиста.</p></article>
+          <article><span>03</span><h3>Уборка</h3><p>Клинер приезжает с инвентарем, средствами и выполняет уборку по чек-листу.</p></article>
+          <article><span>04</span><h3>Приемка</h3><p>Вы проверяете результат, оставляете замечания при необходимости и оплачиваете заказ.</p></article>
+        </div>
+        <div class="center"><a class="pill primary" href="#order">Оставить заявку</a></div>
+      </section>
+
+      <section class="faq section-band" id="faq">
+        <div class="container faq-grid">
+          <h2>Часто задаваемые вопросы</h2>
+          <div class="accordion">
+            <details open><summary>Сколько клинеров приедет на уборку?</summary><p>Количество зависит от объема работ. Обычно приезжает один клинер, на генеральную уборку или большой объект можем отправить команду.</p></details>
+            <details><summary>Как долго будет идти уборка?</summary><p>В среднем от 2 до 6 часов. Точное время зависит от площади, типа уборки и дополнительных услуг.</p></details>
+            <details><summary>Нужно ли находиться в квартире?</summary><p>Нет, можно передать ключи или встретить клинера в начале и принять работу в конце.</p></details>
+            <details><summary>Что входит в стоимость?</summary><p>Работа клинера, базовый инвентарь, профессиональные средства и контроль качества.</p></details>
+            <details><summary>Можно заказать уборку день-в-день?</summary><p>Да, если есть свободные специалисты. Лучше оставить заявку как можно раньше.</p></details>
+            <details><summary>Есть ли гарантия качества?</summary><p>Да. Если что-то упустили, вернемся и исправим замечания.</p></details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <strong class="footer-wordmark">CleanStory</strong>
+          <p>Профессиональная уборка квартир, домов и офисов в Рыбинске. Работаем ежедневно с 9:00 до 21:00.</p>
+          <a class="footer-phone" href="tel:+74855555555">+7 (4855) 55-55-55</a>
+        </div>
+        <div class="footer-links">
+          <h3>Услуги</h3>
+          <a href="#services">Генеральная уборка</a>
+          <a href="#services">Регулярная уборка</a>
+          <a href="#services">Уборка после ремонта</a>
+          <a href="#offices">Уборка офисов</a>
+          <a href="#extras">Мытье окон</a>
+        </div>
+        <div class="footer-links">
+          <h3>CleanStory</h3>
+          <a href="#top">О нас</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#faq">Часто задаваемые вопросы</a>
+          <a href="#order">Контакты</a>
+        </div>
+        <div class="footer-contact">
+          <h3>Никаких роботов - задайте вопрос и получите быстрый ответ</h3>
+          <div class="footer-socials">
+            <a href="https://t.me/chistorbk" target="_blank" rel="noopener" aria-label="Telegram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 4.2 18.3 20c-.2.9-.9 1.1-1.6.7l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.4-5 9.2-8.3c.4-.4-.1-.6-.6-.2L6.2 13.5 1.3 12c-.9-.3-.9-1 0-1.4L20.1 3.4c.9-.3 1.7.2 1.5.8Z"/></svg>
+              Telegram
+            </a>
+            <a href="https://vk.com/chistorbk?act=s&amp;id=232534933" target="_blank" rel="noopener" aria-label="ВКонтакте">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17c-5.3 0-8.4-3.7-8.5-9.8h2.7c.1 4.5 2.1 6.4 3.6 6.8V7.2h2.5v3.9c1.5-.2 3-2 3.5-3.9h2.5c-.4 2.3-2.2 4.1-3.4 4.9 1.2.7 3.2 2.2 4 4.9h-2.8c-.6-1.8-1.9-3.2-3.8-3.4V17H13Z"/></svg>
+              ВКонтакте
+            </a>
+          </div>
+          <small>Рыбинск, ежедневная поддержка с 9:00 до 21:00</small>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© CleanStory, 2026</span>
+        <span>Клининговый сервис в Рыбинске</span>
+        <span>Mastercard / Visa</span>
+      </div>
+      <div class="bottom-bar">
+        <a class="pill primary" href="#order">Заказать уборку</a>
+        <span>© CleanStory, Рыбинск</span>
+        <span class="socials">TG VK</span>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

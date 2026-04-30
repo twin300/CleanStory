@@ -1,0 +1,19 @@
+<svg width="420" height="150" viewBox="0 0 420 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">CleanStory</title>
+  <desc id="desc">CleanStory cleaning service logo</desc>
+  <path d="M210 18C210 18 197 39 197 51C197 61.5 205.2 70 215.5 70C225.8 70 234 61.5 234 51C234 39 210 18 210 18Z" stroke="#8BCDF0" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M215 37C209.5 43 207 48.2 207 53.2C207 58.8 211.4 63.4 216.8 63.4C221.1 63.4 224.8 60.5 226 56.5C223.8 58.1 221.1 59 218.2 59C211.1 59 205.3 53.5 205.3 46.8C205.3 43.3 206.9 40 209.5 37.8C211.2 36.4 213.6 36 215 37Z" fill="#8BCDF0" opacity="0.8"/>
+  <path d="M168 52H190" stroke="#8BCDF0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M174 61H192" stroke="#8BCDF0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M238 52H260" stroke="#8BCDF0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M236 61H254" stroke="#8BCDF0" stroke-width="4" stroke-linecap="round"/>
+  <text x="39" y="111" fill="#050505" font-family="Manrope, Arial, sans-serif" font-size="55" font-weight="900" letter-spacing="-4">CleanSt</text>
+  <g transform="translate(280 70)">
+    <circle cx="23" cy="22" r="21" fill="#8BCDF0"/>
+    <path d="M4 20H26" stroke="white" stroke-width="7" stroke-linecap="round"/>
+    <path d="M12 31H34" stroke="white" stroke-width="7" stroke-linecap="round"/>
+    <path d="M13 10H35" stroke="white" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <text x="326" y="111" fill="#050505" font-family="Manrope, Arial, sans-serif" font-size="55" font-weight="900" letter-spacing="-4">ry</text>
+  <text x="142" y="136" fill="#141414" font-family="Manrope, Arial, sans-serif" font-size="15" font-weight="800" letter-spacing="3">CLEANING SERVICE</text>
+</svg>
