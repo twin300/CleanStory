@@ -39,20 +39,13 @@ const updateCalculator = () => {
   const priceOutput = calculator.querySelector("[data-price]");
 
   roomsOutput.textContent = roomOptions[state.rooms];
-  typeOutput.innerHTML = `${cleaningOptions[state.type]} <span class="hint">?</span>`;
+  typeOutput.textContent = cleaningOptions[state.type];
   priceOutput.textContent = formatPrice(prices[state.rooms][state.type]);
 
   calculator.querySelectorAll("[data-stepper]").forEach((stepper) => {
-    const key = stepper.dataset.stepper;
-    const max = key === "rooms" ? roomOptions.length - 1 : cleaningOptions.length - 1;
-    const isRoomStepper = key === "rooms";
-
-    stepper.classList.toggle("at-start", isRoomStepper && state[key] === 0);
-    stepper.classList.toggle("at-end", isRoomStepper && state[key] === max);
+    stepper.classList.remove("at-start", "at-end");
     stepper.querySelectorAll(".stepper-button").forEach((button) => {
-      const direction = Number(button.dataset.direction);
-      button.disabled =
-        isRoomStepper && ((state[key] === 0 && direction < 0) || (state[key] === max && direction > 0));
+      button.disabled = false;
     });
   });
 };
@@ -64,20 +57,61 @@ calculator?.querySelectorAll(".stepper-button").forEach((button) => {
     const max = key === "rooms" ? roomOptions.length - 1 : cleaningOptions.length - 1;
     const nextValue = state[key] + Number(button.dataset.direction);
 
-    state[key] = key === "rooms" ? Math.min(Math.max(nextValue, 0), max) : (nextValue + max + 1) % (max + 1);
+    state[key] = (nextValue + max + 1) % (max + 1);
     updateCalculator();
   });
 });
 
 calculator?.addEventListener("submit", (event) => {
   event.preventDefault();
-  const button = event.currentTarget.querySelector('button[type="submit"]');
+  const form = event.currentTarget;
+  const button = form.querySelector('button[type="submit"]');
+  const phoneInput = form.querySelector('input[name="phone"]');
   const previousText = button.textContent;
+  const phone = phoneInput.value.trim();
 
-  button.textContent = "Заявка отправлена";
-  setTimeout(() => {
-    button.textContent = previousText;
-  }, 2200);
+  if (phone.length < 7) {
+    phoneInput.focus();
+    button.textContent = "Введите телефон";
+    setTimeout(() => {
+      button.textContent = previousText;
+    }, 1800);
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Отправляем...";
+
+  fetch("/api/order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      phone,
+      rooms: roomOptions[state.rooms],
+      cleaningType: cleaningOptions[state.type],
+      price: formatPrice(prices[state.rooms][state.type]),
+    }),
+  })
+    .then(async (response) => {
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}));
+        throw new Error(error.message || "Не удалось отправить заявку");
+      }
+
+      button.textContent = "Заявка отправлена";
+      form.reset();
+    })
+    .catch(() => {
+      button.textContent = "Ошибка отправки";
+    })
+    .finally(() => {
+      setTimeout(() => {
+        button.disabled = false;
+        button.textContent = previousText;
+      }, 2200);
+    });
 });
 
 updateCalculator();

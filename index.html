@@ -32,7 +32,7 @@
         </nav>
         <div class="header-actions">
           <span class="city">Рыбинск</span>
-          <a class="phone" href="tel:+74855555555">+7 (4855) 55-55-55</a>
+          <a class="phone" href="tel:+79301124508">+7 (930) 112-45-08</a>
         </div>
         <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false">
           <span></span><span></span>
@@ -78,13 +78,13 @@
                 <span class="field-label">Тип уборки</span>
                 <div class="stepper" data-stepper="type">
                   <button class="stepper-button" type="button" data-direction="-1" aria-label="Предыдущий тип уборки">‹</button>
-                  <output name="type" data-value="type">Регулярная <span class="hint">?</span></output>
+                  <output name="type" data-value="type">Регулярная</output>
                   <button class="stepper-button" type="button" data-direction="1" aria-label="Следующий тип уборки">›</button>
                 </div>
               </div>
               <label>
                 Номер телефона
-                <input type="tel" placeholder="+7 (___) ___-__-__" />
+                <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required />
               </label>
               <div class="price-block">
                 <div class="price">от <strong data-price>2 950 ₽</strong></div>
@@ -97,7 +97,7 @@
 
       <section class="counter container">
         <div class="digits" aria-label="Убрано квадратных метров">
-          <span>7</span><span>1</span><span>8</span><span>2</span><span>2</span><span>4</span>
+          <span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>+</span>
           <strong>м²</strong>
         </div>
         <p>Квартир и домов убрано нашими клинерами</p>
@@ -132,36 +132,36 @@
         <h2>Дополнительно можно добавить</h2>
         <div class="extras-grid">
           <article>
-            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M16 6h16a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4Z"/><path d="M12 22h24"/><path d="M18 13v4"/><path d="M18 29v4"/><path d="M17 42v3"/><path d="M31 42v3"/></svg></span><strong>Помыть холодильник внутри</strong><a href="#order">Подробнее →</a>
-            <div class="extra-hover"><p>Клинер разгрузит продукты, вымоет полки и вернет все обратно.</p><b>590 ₽</b></div>
+            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M16 6h16a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4Z"/><path d="M12 22h24"/><path d="M18 13v4"/><path d="M18 29v4"/><path d="M17 42v3"/><path d="M31 42v3"/></svg></span><strong>Помыть холодильник внутри</strong>
+            <div class="extra-hover"><p>Клинер разгрузит продукты, вымоет полки и вернет все обратно.</p><b>от 590 ₽</b></div>
           </article>
           <article>
-            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 9h28v30H10Z"/><path d="M24 9v30"/><path d="M10 24h28"/></svg></span><strong>Помыть окна</strong><a href="#order">Подробнее →</a>
+            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 9h28v30H10Z"/><path d="M24 9v30"/><path d="M10 24h28"/></svg></span><strong>Помыть окна</strong>
             <div class="extra-hover"><p>Вымоем стекла, рамы и подоконники с двух сторон.</p><b>от 450 ₽</b></div>
           </article>
           <article>
-            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 6v9"/><path d="M14 17h20"/><path d="M18 17v8a6 6 0 0 1-6 6h-2v-7a7 7 0 0 1 7-7h1Z"/><path d="M30 17v8a6 6 0 0 0 6 6h2v-7a7 7 0 0 0-7-7h-1Z"/><path d="M24 17v16"/><path d="M19 36h10"/></svg></span><strong>Помыть люстру</strong><a href="#order">Подробнее →</a>
-            <div class="extra-hover"><p>Аккуратно снимем пыль с плафонов, подвесов и основания.</p><b>690 ₽</b></div>
+            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 6v9"/><path d="M14 17h20"/><path d="M18 17v8a6 6 0 0 1-6 6h-2v-7a7 7 0 0 1 7-7h1Z"/><path d="M30 17v8a6 6 0 0 0 6 6h2v-7a7 7 0 0 0-7-7h-1Z"/><path d="M24 17v16"/><path d="M19 36h10"/></svg></span><strong>Помыть люстру</strong>
+            <div class="extra-hover"><p>Аккуратно снимем пыль с плафонов, подвесов и основания.</p><b>от 690 ₽</b></div>
           </article>
           <article>
-            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M18 27a9 9 0 1 1 6.4-2.6L42 42h-8v-5h-5v-5h-5.5L18 27Z"/><path d="M15 15h.1"/></svg></span><strong>Заехать за ключами</strong><a href="#order">Подробнее →</a>
-            <div class="extra-hover"><p>Заберем ключи в удобном месте и вернем после уборки.</p><b>390 ₽</b></div>
+            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M18 27a9 9 0 1 1 6.4-2.6L42 42h-8v-5h-5v-5h-5.5L18 27Z"/><path d="M15 15h.1"/></svg></span><strong>Заехать за ключами</strong>
+            <div class="extra-hover"><p>Заберем ключи в удобном месте и вернем после уборки.</p><b>от 390 ₽</b></div>
           </article>
           <article>
-            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 32h31a5 5 0 0 0 0-10H25"/><path d="M14 22h11"/><path d="M12 17h17"/><path d="M8 32l5-10"/><path d="M8 32h34"/><path d="M12 36h24"/></svg></span><strong>Погладить вещи</strong><a href="#order">Подробнее →</a>
+            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 32h31a5 5 0 0 0 0-10H25"/><path d="M14 22h11"/><path d="M12 17h17"/><path d="M8 32l5-10"/><path d="M8 32h34"/><path d="M12 36h24"/></svg></span><strong>Погладить вещи</strong>
             <div class="extra-hover"><p>Погладим одежду, белье или текстиль после уборки.</p><b>от 490 ₽</b></div>
           </article>
           <article>
-            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M9 24h30a5 5 0 0 1 5 5v10H4V29a5 5 0 0 1 5-5Z"/><path d="M8 24V12h25a6 6 0 0 1 6 6v6"/><path d="M13 20h10"/><path d="M4 39v4"/><path d="M44 39v4"/></svg></span><strong>Поменять постельное белье</strong><a href="#order">Подробнее →</a>
-            <div class="extra-hover"><p>Снимем старое белье и аккуратно застелим свежий комплект.</p><b>290 ₽</b></div>
+            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M9 24h30a5 5 0 0 1 5 5v10H4V29a5 5 0 0 1 5-5Z"/><path d="M8 24V12h25a6 6 0 0 1 6 6v6"/><path d="M13 20h10"/><path d="M4 39v4"/><path d="M44 39v4"/></svg></span><strong>Поменять постельное белье</strong>
+            <div class="extra-hover"><p>Снимем старое белье и аккуратно застелим свежий комплект.</p><b>от 290 ₽</b></div>
           </article>
           <article>
-            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 8h28a3 3 0 0 1 3 3v28a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3Z"/><path d="M7 17h34"/><path d="M14 12h.1"/><path d="M22 12h.1"/><path d="M30 12h.1"/><path d="M15 23h18v13H15Z"/></svg></span><strong>Помыть духовку</strong><a href="#order">Подробнее →</a>
-            <div class="extra-hover"><p>Удалим жир и нагар внутри духовки профессиональным средством.</p><b>790 ₽</b></div>
+            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 8h28a3 3 0 0 1 3 3v28a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3Z"/><path d="M7 17h34"/><path d="M14 12h.1"/><path d="M22 12h.1"/><path d="M30 12h.1"/><path d="M15 23h18v13H15Z"/></svg></span><strong>Помыть духовку</strong>
+            <div class="extra-hover"><p>Удалим жир и нагар внутри духовки профессиональным средством.</p><b>от 790 ₽</b></div>
           </article>
           <article>
-            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M7 12h34v25H7Z"/><path d="M13 18h17v13H13Z"/><path d="M35 18h.1"/><path d="M35 25h.1"/><path d="M35 31h.1"/><path d="M18 37v4"/><path d="M36 37v4"/></svg></span><strong>Помыть СВЧ</strong><a href="#order">Подробнее →</a>
-            <div class="extra-hover"><p>Очистим микроволновку внутри и снаружи без резкого запаха.</p><b>390 ₽</b></div>
+            <span class="extra-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M7 12h34v25H7Z"/><path d="M13 18h17v13H13Z"/><path d="M35 18h.1"/><path d="M35 25h.1"/><path d="M35 31h.1"/><path d="M18 37v4"/><path d="M36 37v4"/></svg></span><strong>Помыть СВЧ</strong>
+            <div class="extra-hover"><p>Очистим микроволновку внутри и снаружи без резкого запаха.</p><b>от 390 ₽</b></div>
           </article>
         </div>
       </section>
@@ -288,7 +288,7 @@
 
       <section class="safe section-band">
         <div class="container split">
-          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80" alt="Клинер с инвентарем" />
+          <img src="безопасно.png" alt="Безопасная уборка CleanStory" />
           <div>
             <h2>С нами безопасно</h2>
             <div class="safe-grid">
@@ -299,7 +299,6 @@
               <article><b>Выезжаем в любой район города</b></article>
               <article><b>Выполним уборку день-в-день</b></article>
             </div>
-            <a class="pill primary" href="#order">Узнать стоимость</a>
           </div>
         </div>
       </section>
@@ -307,25 +306,26 @@
       <section class="catalog container" id="offices">
         <h2>Профессиональная уборка в Рыбинске</h2>
         <div class="service-grid">
-          <article><img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=700&q=80" alt="Кухня" /><span>от 2 950 ₽</span><h3>Регулярная уборка квартир</h3><p>Поддерживающая уборка во всех помещениях квартиры.</p></article>
-          <article><img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=700&q=80" alt="Генеральная уборка" /><span>от 6 250 ₽</span><h3>Генеральная уборка</h3><p>Тщательно убираем все помещения и трудные зоны.</p></article>
-          <article><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80" alt="Офис" /><span>от 8 550 ₽</span><h3>Уборка после ремонта</h3><p>Убираем строительную пыль и следы материалов.</p></article>
-          <article><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=80" alt="Офисное пространство" /><span>от 7 500 ₽</span><h3>Уборка офисов</h3><p>Чистота рабочих зон, переговорных и санузлов.</p></article>
-          <article><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=700&q=80" alt="Коттедж" /><span>от 6 000 ₽</span><h3>Уборка домов и коттеджей</h3><p>Выездная команда для больших помещений.</p></article>
+          <article><img src="Профессиональная уборка в Рыбинске/регулярная.png" alt="Регулярная уборка квартиры" /><div><span>от 2 950 ₽</span><h3>Регулярная уборка квартир</h3><p>Поддерживающая уборка комнат, кухни, ванной и прихожей.</p></div></article>
+          <article><img src="Профессиональная уборка в Рыбинске/генеральная.png" alt="Генеральная уборка" /><div><span>от 6 250 ₽</span><h3>Генеральная уборка</h3><p>Глубоко отмываем трудные зоны, фасады, плинтусы и сантехнику.</p></div></article>
+          <article><img src="Профессиональная уборка в Рыбинске/после ремонта.png" alt="Уборка после ремонта" /><div><span>от 8 550 ₽</span><h3>Уборка после ремонта</h3><p>Собираем строительную пыль, следы материалов и мелкий мусор.</p></div></article>
+          <article><img src="Профессиональная уборка в Рыбинске/уборка офисов.png" alt="Уборка офисов" /><div><span>от 7 500 ₽</span><h3>Уборка офисов</h3><p>Поддерживаем чистоту рабочих мест, переговорных и санузлов.</p></div></article>
+          <article><img src="Профессиональная уборка в Рыбинске/уборка домов и коттеджей.png" alt="Уборка домов и коттеджей" /><div><span>от 6 000 ₽</span><h3>Уборка домов и коттеджей</h3><p>Выездная команда для больших помещений и сложных задач.</p></div></article>
+          <article><img src="Профессиональная уборка в Рыбинске/мытье окон.png" alt="Мытье окон" /><div><span>от 450 ₽</span><h3>Мытье окон</h3><p>Моем стекла, рамы, подоконники и убираем следы ремонта.</p></div></article>
         </div>
       </section>
 
       <section class="rooms section-band">
         <div class="section-head container compact">
           <h2>Закажите клининг отдельных помещений</h2>
-          <div class="arrows"><button type="button">←</button><button type="button">→</button></div>
         </div>
         <div class="room-strip">
-          <article><img src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=500&q=80" alt="Спальня" /><h3>Уборка спальни</h3><p>Заправляем кровать, протираем пыль, пылесосим.</p></article>
-          <article><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=500&q=80" alt="Кухня" /><h3>Уборка кухни</h3><p>Моем плиту, раковину, столешницы и фасады.</p></article>
-          <article><img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=500&q=80" alt="Ванная" /><h3>Уборка ванной</h3><p>Натираем сантехнику, зеркала и кафель.</p></article>
-          <article><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="Гостиная" /><h3>Уборка гостиной</h3><p>Пылесосим ковры, моем полы и поверхности.</p></article>
-          <article><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=500&q=80" alt="Детская" /><h3>Уборка детской</h3><p>Аккуратно раскладываем вещи и игрушки.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=640&q=82" alt="Чистая спальня" /><h3>Спальня</h3><p>Заправляем кровать, протираем пыль, пылесосим.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=640&q=82" alt="Чистая кухня" /><h3>Кухня</h3><p>Моем плиту, раковину, столешницы и фасады.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=640&q=82" alt="Чистая ванная" /><h3>Ванная</h3><p>Натираем сантехнику, зеркала и кафель.</p></article>
+          <article><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=640&q=82" alt="Чистая гостиная" /><h3>Гостиная</h3><p>Пылесосим ковры, моем полы и поверхности.</p></article>
+          <article><img src="Закажите клининг отдельных помещений/десткая.png" alt="Уборка детской" /><h3>Детская</h3><p>Аккуратно раскладываем вещи и игрушки.</p></article>
+          <article><img src="Закажите клининг отдельных помещений/прихожая.png" alt="Уборка прихожей" /><h3>Прихожая</h3><p>Моем пол, зеркала, входную зону и открытые поверхности.</p></article>
         </div>
       </section>
 
@@ -365,8 +365,9 @@
       <div class="container footer-grid">
         <div class="footer-brand">
           <strong class="footer-wordmark">CleanStory</strong>
-          <p>Профессиональная уборка квартир, домов и офисов в Рыбинске. Работаем ежедневно с 9:00 до 21:00.</p>
-          <a class="footer-phone" href="tel:+74855555555">+7 (4855) 55-55-55</a>
+          <p>Профессиональная уборка квартир, домов и офисов в Рыбинске. Работаем ежедневно.</p>
+          <a class="footer-phone" href="tel:+79301124508">+7 (930) 112-45-08</a>
+          <p class="footer-address">ул. Герцена, 34, Рыбинск<br />этаж 3, офис 6</p>
         </div>
         <div class="footer-links">
           <h3>Услуги</h3>
@@ -401,13 +402,11 @@
               ВКонтакте
             </a>
           </div>
-          <small>Рыбинск, ежедневная поддержка с 9:00 до 21:00</small>
         </div>
       </div>
       <div class="container footer-bottom">
         <span>© CleanStory, 2026</span>
         <span>Клининговый сервис в Рыбинске</span>
-        <span>Mastercard / Visa</span>
       </div>
       <div class="bottom-bar">
         <a class="pill primary" href="#order">Заказать уборку</a>

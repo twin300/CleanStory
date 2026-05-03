@@ -1,1 +1,3 @@
 .edge-profile/
+.env
+.env.local
