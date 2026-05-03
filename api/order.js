@@ -35,8 +35,15 @@ const escapeHtml = (value) =>
     .replace(/>/g, "&gt;");
 
 module.exports = async (request, response) => {
+  if (request.method === "GET") {
+    return sendJson(response, 200, {
+      ok: true,
+      telegramConfigured: Boolean(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID),
+    });
+  }
+
   if (request.method !== "POST") {
-    response.setHeader("Allow", "POST");
+    response.setHeader("Allow", "GET, POST");
     return sendJson(response, 405, { message: "Метод не поддерживается" });
   }
 
@@ -76,7 +83,12 @@ module.exports = async (request, response) => {
     });
 
     if (!telegramResponse.ok) {
-      return sendJson(response, 502, { message: "Telegram не принял заявку" });
+      const telegramError = await telegramResponse.json().catch(() => ({}));
+
+      return sendJson(response, 502, {
+        message: telegramError.description || "Telegram не принял заявку",
+        code: telegramError.error_code || telegramResponse.status,
+      });
     }
 
     return sendJson(response, 200, { ok: true });

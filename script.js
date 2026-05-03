@@ -103,7 +103,8 @@ calculator?.addEventListener("submit", (event) => {
       button.textContent = "Заявка отправлена";
       form.reset();
     })
-    .catch(() => {
+    .catch((error) => {
+      console.error("CleanStory order error:", error);
       button.textContent = "Ошибка отправки";
     })
     .finally(() => {
@@ -115,6 +116,89 @@ calculator?.addEventListener("submit", (event) => {
 });
 
 updateCalculator();
+
+const counterDigits = document.querySelector("[data-counter-start]");
+
+const setCounterValue = (counter, value) => {
+  const digits = Array.from(counter.querySelectorAll("[data-digit]"));
+  const valueText = String(value).padStart(digits.length, "0").slice(-digits.length);
+
+  digits.forEach((digit, index) => {
+    const nextValue = valueText[index];
+    if (digit.textContent === nextValue) return;
+
+    digit.textContent = nextValue;
+    if (counter.dataset.ready === "true") {
+      digit.classList.remove("is-flipping");
+      digit.offsetHeight;
+      digit.classList.add("is-flipping");
+    }
+  });
+};
+
+const animateCounter = (counter) => {
+  if (counter.dataset.animated === "true") return;
+
+  counter.dataset.animated = "true";
+  let currentValue = Number(counter.dataset.counterStart || 10000);
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  setCounterValue(counter, currentValue);
+  counter.dataset.ready = "true";
+
+  if (reducedMotion) {
+    return;
+  }
+
+  const step = () => {
+    const nextValue = currentValue + 10 + Math.floor(Math.random() * 16);
+    const startedAt = performance.now();
+    const duration = 2200;
+
+    const tick = (now) => {
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(currentValue + (nextValue - currentValue) * eased);
+
+      setCounterValue(counter, value);
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+        return;
+      }
+
+      currentValue = nextValue;
+      scheduleNextStep();
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  const scheduleNextStep = () => {
+    setTimeout(step, 5800 + Math.floor(Math.random() * 1800));
+  };
+
+  scheduleNextStep();
+};
+
+if (counterDigits) {
+  if ("IntersectionObserver" in window) {
+    const counterObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.45 }
+    );
+
+    counterObserver.observe(counterDigits);
+  } else {
+    animateCounter(counterDigits);
+  }
+}
 
 const matrixData = {
   rooms: [
