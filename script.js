@@ -64,6 +64,53 @@ window.addEventListener("resize", () => {
   }
 });
 
+const extraCards = Array.from(document.querySelectorAll(".extras-grid article"));
+const extraCardsQuery = window.matchMedia("(max-width: 760px)");
+
+const closeExtraCards = (exceptCard = null) => {
+  extraCards.forEach((card) => {
+    if (card !== exceptCard) {
+      card.classList.remove("is-open");
+      card.setAttribute("aria-expanded", "false");
+    }
+  });
+};
+
+extraCards.forEach((card) => {
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-expanded", "false");
+
+  card.addEventListener("click", (event) => {
+    if (!extraCardsQuery.matches) return;
+
+    event.preventDefault();
+    const shouldOpen = !card.classList.contains("is-open");
+    closeExtraCards(card);
+    card.classList.toggle("is-open", shouldOpen);
+    card.setAttribute("aria-expanded", String(shouldOpen));
+  });
+
+  card.addEventListener("keydown", (event) => {
+    if (!extraCardsQuery.matches || (event.key !== "Enter" && event.key !== " ")) return;
+
+    event.preventDefault();
+    card.click();
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (!extraCardsQuery.matches || event.target.closest(".extras-grid article")) return;
+
+  closeExtraCards();
+});
+
+window.addEventListener("resize", () => {
+  if (!extraCardsQuery.matches) {
+    closeExtraCards();
+  }
+});
+
 const calculator = document.querySelector(".calculator-card");
 const state = {
   rooms: 0,
