@@ -117,6 +117,7 @@ window.addEventListener("resize", () => {
 });
 
 const calculator = document.querySelector(".calculator-card");
+const calculatorPhoneInput = calculator?.querySelector('input[name="phone"]');
 const state = {
   rooms: 0,
   type: 0,
@@ -133,6 +134,59 @@ const prices = [
 ];
 
 const formatPrice = (value) => `${value.toLocaleString("ru-RU")} ₽`;
+
+const PHONE_PREFIX = "+7 ";
+
+const getLocalPhoneDigits = (value) => {
+  let digits = value.replace(/\D/g, "");
+
+  if (digits.startsWith("8")) {
+    digits = digits.slice(1);
+  } else if (digits.startsWith("7")) {
+    digits = digits.slice(1);
+  }
+
+  return digits.slice(0, 10);
+};
+
+const formatRussianPhone = (value) => {
+  const digits = getLocalPhoneDigits(value);
+
+  if (!digits) {
+    return PHONE_PREFIX;
+  }
+
+  let result = `${PHONE_PREFIX}(${digits.slice(0, 3)}`;
+
+  if (digits.length >= 3) {
+    result += ")";
+  }
+
+  if (digits.length > 3) {
+    result += ` ${digits.slice(3, 6)}`;
+  }
+
+  if (digits.length > 6) {
+    result += `-${digits.slice(6, 8)}`;
+  }
+
+  if (digits.length > 8) {
+    result += `-${digits.slice(8, 10)}`;
+  }
+
+  return result;
+};
+
+const syncPhoneInput = () => {
+  if (!calculatorPhoneInput) return;
+
+  calculatorPhoneInput.value = formatRussianPhone(calculatorPhoneInput.value);
+};
+
+calculatorPhoneInput?.addEventListener("focus", syncPhoneInput);
+calculatorPhoneInput?.addEventListener("input", syncPhoneInput);
+calculatorPhoneInput?.addEventListener("blur", syncPhoneInput);
+syncPhoneInput();
 
 const updateCalculator = () => {
   if (!calculator) return;
@@ -171,9 +225,10 @@ calculator?.addEventListener("submit", (event) => {
   const button = form.querySelector('button[type="submit"]');
   const phoneInput = form.querySelector('input[name="phone"]');
   const previousText = button.textContent;
-  const phone = phoneInput.value.trim();
+  const phoneDigits = getLocalPhoneDigits(phoneInput.value);
+  const phone = formatRussianPhone(phoneInput.value);
 
-  if (phone.length < 7) {
+  if (phoneDigits.length !== 10) {
     phoneInput.focus();
     button.textContent = "Введите телефон";
     setTimeout(() => {
@@ -205,6 +260,7 @@ calculator?.addEventListener("submit", (event) => {
 
       button.textContent = "Заявка отправлена";
       form.reset();
+      syncPhoneInput();
     })
     .catch((error) => {
       console.error("CleanStory order error:", error);
