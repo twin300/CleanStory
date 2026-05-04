@@ -4818,3 +4818,103 @@ body {
     text-overflow: ellipsis;
   }
 }
+
+/* Mobile interaction repair */
+@media (max-width: 920px) {
+  body {
+    padding-bottom: 0 !important;
+  }
+
+  .site-header {
+    position: sticky !important;
+    top: 0 !important;
+    right: auto !important;
+    left: auto !important;
+    width: 100%;
+  }
+
+  .topbar {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 56px;
+    column-gap: 14px;
+    align-items: center;
+    justify-content: stretch;
+  }
+
+  .topbar .brand {
+    justify-self: start;
+  }
+
+  .menu-button {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    justify-self: end;
+    margin-left: 0;
+    transform: none !important;
+  }
+
+  .main-nav.open {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: max(0px, env(safe-area-inset-right));
+    left: max(0px, env(safe-area-inset-left));
+  }
+
+  .bottom-bar {
+    position: static !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: min(100%, 620px);
+    margin: 28px auto 0;
+    pointer-events: auto;
+  }
+
+  .site-footer {
+    padding-bottom: calc(24px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse), (max-width: 760px) {
+  .extras-grid article:hover,
+  .extras-grid article:focus-within {
+    transform: none !important;
+  }
+
+  .extras-grid article:hover > span,
+  .extras-grid article:hover > strong,
+  .extras-grid article:hover > a,
+  .extras-grid article:hover > .extra-icon,
+  .extras-grid article:focus-within > span,
+  .extras-grid article:focus-within > strong,
+  .extras-grid article:focus-within > a,
+  .extras-grid article:focus-within > .extra-icon {
+    opacity: 1 !important;
+  }
+
+  .extras-grid article:hover .extra-hover,
+  .extras-grid article:focus-within .extra-hover,
+  .extra-hover {
+    position: static !important;
+    margin-top: 18px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .extra-hover p {
+    display: none !important;
+  }
+
+  .extra-hover b {
+    display: inline-flex !important;
+    min-height: 36px;
+    align-items: center;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: #e7fbfc;
+  }
+}
