@@ -4518,3 +4518,303 @@ body::after {
     width: 100%;
   }
 }
+
+/* Cross-device mobile polish for iOS and Android webviews */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@supports (overflow: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
+.site-header,
+.hero,
+.included,
+.extras,
+.reviews,
+.results,
+.window-cleaning,
+.photo-price,
+.senior-discount,
+.safe,
+.catalog,
+.rooms,
+.steps,
+.faq,
+.site-footer {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@media (max-width: 920px) {
+  .topbar {
+    position: relative;
+  }
+
+  .menu-button {
+    display: inline-grid;
+    width: 52px;
+    height: 52px;
+    place-content: center;
+    gap: 5px;
+    padding: 0;
+    border-color: rgba(24, 169, 180, 0.16);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 12px 28px rgba(12, 104, 113, 0.08);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .menu-button span {
+    display: block;
+    width: 23px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--ink);
+  }
+
+  .main-nav.open {
+    top: calc(100% + 10px);
+    right: max(20px, env(safe-area-inset-right));
+    left: max(20px, env(safe-area-inset-left));
+    z-index: 50;
+    gap: 18px;
+    padding: 26px 22px;
+    border-color: rgba(24, 169, 180, 0.14);
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 24px 70px rgba(12, 104, 113, 0.16);
+  }
+}
+
+@media (max-width: 760px) {
+  .container,
+  .rooms .section-head,
+  .room-strip {
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: max(20px, env(safe-area-inset-right));
+    padding-left: max(20px, env(safe-area-inset-left));
+  }
+
+  .topbar.container {
+    padding-right: max(24px, env(safe-area-inset-right));
+    padding-left: max(24px, env(safe-area-inset-left));
+  }
+
+  .brand {
+    width: clamp(146px, 44vw, 178px);
+  }
+
+  .hero,
+  .included,
+  .extras,
+  .reviews,
+  .results,
+  .window-cleaning,
+  .photo-price,
+  .senior-discount,
+  .safe,
+  .catalog,
+  .rooms,
+  .steps,
+  .faq {
+    padding-top: clamp(58px, 15vw, 82px);
+    padding-bottom: clamp(58px, 15vw, 82px);
+  }
+
+  .hero h1,
+  .hero-offer h2,
+  .section-head h2,
+  .extras h2,
+  .reviews-head h2,
+  .results h2,
+  .window-cleaning h2,
+  .photo-price h2,
+  .senior-discount h2,
+  .safe h2,
+  .catalog h2,
+  .rooms h2,
+  .steps h2,
+  .faq h2 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .service-grid,
+  .extras-grid,
+  .room-strip {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .service-grid article {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    border-radius: 22px;
+  }
+
+  .service-grid img {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1.42;
+    object-fit: cover;
+  }
+
+  .service-grid article > div {
+    padding: 24px max(22px, env(safe-area-inset-right)) 26px max(22px, env(safe-area-inset-left));
+  }
+
+  .extras-grid article {
+    min-height: 0;
+    padding: 28px 24px;
+  }
+
+  .extras-grid article > .extra-icon,
+  .extras-grid article > strong {
+    opacity: 1;
+  }
+
+  .extra-hover {
+    position: static;
+    margin-top: 18px;
+    padding: 0;
+    background: transparent;
+    opacity: 1;
+    transform: none;
+  }
+
+  .extra-hover p {
+    display: none;
+  }
+
+  .extra-hover b {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: #e7fbfc;
+    color: var(--deep-aqua);
+    font-size: 18px;
+  }
+
+  .footer-grid {
+    gap: 30px;
+  }
+
+  .site-footer {
+    padding-bottom: calc(150px + env(safe-area-inset-bottom));
+  }
+
+  .footer-socials {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .container,
+  .rooms .section-head,
+  .room-strip {
+    padding-right: max(18px, env(safe-area-inset-right));
+    padding-left: max(18px, env(safe-area-inset-left));
+  }
+
+  .bottom-bar {
+    right: max(18px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+    left: max(18px, env(safe-area-inset-left));
+    padding: 12px;
+    border-radius: 24px;
+  }
+
+  .bottom-bar .pill {
+    min-height: 58px;
+  }
+}
+
+@media (max-width: 920px) {
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: static;
+  }
+
+  .menu-button {
+    position: fixed;
+    top: calc(34px + env(safe-area-inset-top));
+    right: calc(20px + env(safe-area-inset-right)) !important;
+    display: flex !important;
+    flex: 0 0 52px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+  }
+
+  .menu-button span {
+    flex: 0 0 2px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-head,
+  .hero-offer,
+  .calculator-card,
+  .included-matrix,
+  .extras-grid article,
+  .reviews-head,
+  .work-carousel,
+  .window-cleaning-grid,
+  .photo-price .split,
+  .senior-discount,
+  .safe .split,
+  .service-grid article,
+  .room-strip article,
+  .faq-grid,
+  .footer-grid {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .calculator-card {
+    justify-self: stretch;
+    align-self: stretch;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .calculator-card label,
+  .calculator-card .field {
+    margin-right: clamp(20px, 6vw, 32px);
+    margin-left: clamp(20px, 6vw, 32px);
+  }
+
+  .price-block {
+    padding-right: clamp(20px, 6vw, 32px);
+    padding-left: clamp(20px, 6vw, 32px);
+  }
+
+  .stepper {
+    grid-template-columns: 54px minmax(0, 1fr) 54px;
+  }
+
+  .stepper output {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
