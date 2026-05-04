@@ -1,16 +1,67 @@
 const menuButton = document.querySelector(".menu-button");
 const mainNav = document.querySelector(".main-nav");
+const navPlaceholder = document.createComment("main-nav-placeholder");
+
+mainNav?.after(navPlaceholder);
+
+const mobileMenuQuery = window.matchMedia("(max-width: 920px)");
+
+const updateMobileMenuTop = () => {
+  const header = document.querySelector(".site-header");
+  const headerBottom = header?.getBoundingClientRect().bottom ?? 68;
+  document.documentElement.style.setProperty("--mobile-menu-top", `${Math.max(headerBottom + 10, 74)}px`);
+};
+
+const syncNavPlacement = () => {
+  if (!mainNav || !navPlaceholder.parentNode) return;
+
+  const shouldFloat = mobileMenuQuery.matches && mainNav.classList.contains("open");
+
+  if (shouldFloat && mainNav.parentNode !== document.body) {
+    document.body.appendChild(mainNav);
+    return;
+  }
+
+  if (!shouldFloat && mainNav.parentNode !== navPlaceholder.parentNode) {
+    navPlaceholder.parentNode.insertBefore(mainNav, navPlaceholder);
+  }
+};
+
+const closeMenu = () => {
+  mainNav?.classList.remove("open");
+  menuButton?.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("menu-open");
+  syncNavPlacement();
+};
 
 menuButton?.addEventListener("click", () => {
   const isOpen = mainNav.classList.toggle("open");
   menuButton.setAttribute("aria-expanded", String(isOpen));
+  document.body.classList.toggle("menu-open", isOpen);
+
+  if (isOpen) {
+    updateMobileMenuTop();
+  }
+
+  syncNavPlacement();
 });
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", () => {
-    mainNav?.classList.remove("open");
-    menuButton?.setAttribute("aria-expanded", "false");
+    closeMenu();
   });
+});
+
+window.addEventListener("resize", () => {
+  if (!mobileMenuQuery.matches) {
+    closeMenu();
+    return;
+  }
+
+  if (mainNav?.classList.contains("open")) {
+    updateMobileMenuTop();
+    syncNavPlacement();
+  }
 });
 
 const calculator = document.querySelector(".calculator-card");
