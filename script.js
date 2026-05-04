@@ -240,7 +240,7 @@ calculator?.addEventListener("submit", (event) => {
   button.disabled = true;
   button.textContent = "Отправляем...";
 
-  fetch("/api/order", {
+  fetch("/send.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
