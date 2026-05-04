@@ -177,13 +177,76 @@ const formatRussianPhone = (value) => {
   return result;
 };
 
+const countLocalDigitsBeforeCaret = (value, caretPosition) => getLocalPhoneDigits(value.slice(0, caretPosition)).length;
+
+const getCaretPositionByDigitCount = (value, digitCount) => {
+  if (digitCount <= 0) {
+    return value.length;
+  }
+
+  let seenDigits = 0;
+
+  for (let index = 0; index < value.length; index += 1) {
+    if (!/\d/.test(value[index])) continue;
+
+    seenDigits += 1;
+
+    if (seenDigits === digitCount + 1) {
+      return index + 1;
+    }
+  }
+
+  return value.length;
+};
+
 const syncPhoneInput = () => {
   if (!calculatorPhoneInput) return;
 
-  calculatorPhoneInput.value = formatRussianPhone(calculatorPhoneInput.value);
+  const previousCaret = calculatorPhoneInput.selectionStart ?? calculatorPhoneInput.value.length;
+  const digitsBeforeCaret = countLocalDigitsBeforeCaret(calculatorPhoneInput.value, previousCaret);
+  const formattedPhone = formatRussianPhone(calculatorPhoneInput.value);
+
+  calculatorPhoneInput.value = formattedPhone;
+
+  if (document.activeElement === calculatorPhoneInput) {
+    const nextCaret = getCaretPositionByDigitCount(formattedPhone, digitsBeforeCaret);
+    calculatorPhoneInput.setSelectionRange(nextCaret, nextCaret);
+  }
 };
 
 calculatorPhoneInput?.addEventListener("focus", syncPhoneInput);
+calculatorPhoneInput?.addEventListener("beforeinput", (event) => {
+  if (!event.inputType?.startsWith("deleteContent")) return;
+
+  const selectionStart = calculatorPhoneInput.selectionStart ?? 0;
+  const selectionEnd = calculatorPhoneInput.selectionEnd ?? selectionStart;
+
+  if (selectionStart !== selectionEnd) return;
+
+  const direction = event.inputType === "deleteContentForward" ? 1 : -1;
+  const targetIndex = direction === -1 ? selectionStart - 1 : selectionStart;
+  const targetChar = calculatorPhoneInput.value[targetIndex];
+
+  if (targetChar === undefined || /\d/.test(targetChar)) return;
+
+  const digits = getLocalPhoneDigits(calculatorPhoneInput.value);
+  const digitsBeforeCaret = countLocalDigitsBeforeCaret(calculatorPhoneInput.value, selectionStart);
+  const deleteIndex = direction === -1 ? digitsBeforeCaret - 1 : digitsBeforeCaret;
+
+  if (deleteIndex < 0 || deleteIndex >= digits.length) {
+    event.preventDefault();
+    return;
+  }
+
+  event.preventDefault();
+  const nextDigits = `${digits.slice(0, deleteIndex)}${digits.slice(deleteIndex + 1)}`;
+  const formattedPhone = formatRussianPhone(nextDigits);
+  const nextDigitCount = direction === -1 ? deleteIndex : digitsBeforeCaret;
+  const nextCaret = getCaretPositionByDigitCount(formattedPhone, nextDigitCount);
+
+  calculatorPhoneInput.value = formattedPhone;
+  calculatorPhoneInput.setSelectionRange(nextCaret, nextCaret);
+});
 calculatorPhoneInput?.addEventListener("input", syncPhoneInput);
 calculatorPhoneInput?.addEventListener("blur", syncPhoneInput);
 syncPhoneInput();
