@@ -72,6 +72,7 @@ const closeExtraCards = (exceptCard = null) => {
     if (card !== exceptCard) {
       card.classList.remove("is-open");
       card.setAttribute("aria-expanded", "false");
+      card.blur();
     }
   });
 };
@@ -89,6 +90,10 @@ extraCards.forEach((card) => {
     closeExtraCards(card);
     card.classList.toggle("is-open", shouldOpen);
     card.setAttribute("aria-expanded", String(shouldOpen));
+
+    if (!shouldOpen) {
+      card.blur();
+    }
   });
 
   card.addEventListener("keydown", (event) => {

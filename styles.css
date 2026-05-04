@@ -5092,3 +5092,62 @@ body {
     transform: translateY(0) !important;
   }
 }
+
+@media (max-width: 760px) {
+  .extras-grid article {
+    box-sizing: border-box !important;
+    height: 214px !important;
+    min-height: 214px !important;
+    max-height: 214px !important;
+    overflow: hidden !important;
+  }
+
+  .extras-grid article .extra-hover,
+  .extras-grid article:hover .extra-hover,
+  .extras-grid article:focus .extra-hover,
+  .extras-grid article:focus-within .extra-hover {
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    margin: 0 !important;
+    padding: 26px 24px 22px !important;
+    background:
+      radial-gradient(circle at 82% 20%, rgba(144, 238, 240, 0.34), transparent 34%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(225, 250, 251, 0.96)) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(14px) !important;
+  }
+
+  .extras-grid article.is-open .extra-hover,
+  .extras-grid article.is-open:hover .extra-hover,
+  .extras-grid article.is-open:focus .extra-hover,
+  .extras-grid article.is-open:focus-within .extra-hover {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .extras-grid article:not(.is-open) > .extra-icon,
+  .extras-grid article:not(.is-open) > strong,
+  .extras-grid article:not(.is-open):hover > .extra-icon,
+  .extras-grid article:not(.is-open):hover > strong,
+  .extras-grid article:not(.is-open):focus > .extra-icon,
+  .extras-grid article:not(.is-open):focus > strong,
+  .extras-grid article:not(.is-open):focus-within > .extra-icon,
+  .extras-grid article:not(.is-open):focus-within > strong {
+    opacity: 1 !important;
+  }
+
+  .extras-grid article.is-open > .extra-icon,
+  .extras-grid article.is-open > strong,
+  .extras-grid article.is-open:hover > .extra-icon,
+  .extras-grid article.is-open:hover > strong,
+  .extras-grid article.is-open:focus > .extra-icon,
+  .extras-grid article.is-open:focus > strong,
+  .extras-grid article.is-open:focus-within > .extra-icon,
+  .extras-grid article.is-open:focus-within > strong {
+    opacity: 0 !important;
+  }
+}
