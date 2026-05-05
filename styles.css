@@ -124,6 +124,12 @@ select {
   font-weight: 700;
 }
 
+.header-email {
+  color: #657780;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .pill {
   display: inline-flex;
   align-items: center;
@@ -1632,10 +1638,21 @@ h3 {
   color: #555b66;
 }
 
+.footer-contacts {
+  display: grid;
+  gap: 6px;
+  margin: 16px 0 4px;
+}
+
 .footer-phone {
   display: inline-block;
-  margin: 16px 0 4px;
   font-size: 22px;
+  font-weight: 700;
+}
+
+.footer-email {
+  color: #657780;
+  font-size: 16px;
   font-weight: 700;
 }
 
