@@ -111,7 +111,7 @@ select {
 }
 
 .mobile-nav-contacts {
-  display: none;
+  display: none !important;
 }
 
 .header-actions {
@@ -4996,8 +4996,8 @@ body {
     color: #42545d;
   }
 
-  .main-nav.open .mobile-nav-contacts {
-    display: grid;
+  .main-nav.open .mobile-nav-contacts:not([hidden]) {
+    display: grid !important;
     gap: 6px;
     margin-top: 4px;
     padding-top: 14px;

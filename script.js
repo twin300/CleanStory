@@ -1,11 +1,20 @@
 const menuButton = document.querySelector(".menu-button");
 const mainNav = document.querySelector(".main-nav");
+const mobileNavContacts = document.querySelector(".mobile-nav-contacts");
 const navPlaceholder = document.createComment("main-nav-placeholder");
 const mobileContactQuery = window.matchMedia("(max-width: 920px)");
 
 mainNav?.after(navPlaceholder);
 
 const mobileMenuQuery = mobileContactQuery;
+
+const syncMobileNavContacts = () => {
+  if (!mobileNavContacts) return;
+
+  const shouldShow = mobileContactQuery.matches && mainNav?.classList.contains("open");
+  mobileNavContacts.hidden = !shouldShow;
+  mobileNavContacts.style.display = shouldShow ? "grid" : "none";
+};
 
 document.querySelectorAll(".email-link").forEach((link) => {
   link.addEventListener("click", (event) => {
@@ -39,6 +48,7 @@ const closeMenu = () => {
   mainNav?.classList.remove("open");
   menuButton?.setAttribute("aria-expanded", "false");
   document.body.classList.remove("menu-open");
+  syncMobileNavContacts();
   syncNavPlacement();
 };
 
@@ -51,6 +61,7 @@ menuButton?.addEventListener("click", () => {
     updateMobileMenuTop();
   }
 
+  syncMobileNavContacts();
   syncNavPlacement();
 });
 
@@ -70,7 +81,11 @@ window.addEventListener("resize", () => {
     updateMobileMenuTop();
     syncNavPlacement();
   }
+
+  syncMobileNavContacts();
 });
+
+syncMobileNavContacts();
 
 const extraCards = Array.from(document.querySelectorAll(".extras-grid article"));
 const extraCardsQuery = window.matchMedia("(max-width: 760px)");
