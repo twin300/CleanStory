@@ -110,6 +110,10 @@ select {
   color: var(--ink);
 }
 
+.mobile-nav-contacts {
+  display: none;
+}
+
 .header-actions {
   gap: 16px;
   white-space: nowrap;
@@ -128,6 +132,10 @@ select {
   color: #657780;
   font-size: 13px;
   font-weight: 700;
+}
+
+.email-link {
+  cursor: text;
 }
 
 .pill {
@@ -4986,6 +4994,19 @@ body {
     border-radius: 16px;
     background: rgba(238, 252, 253, 0.66);
     color: #42545d;
+  }
+
+  .main-nav.open .mobile-nav-contacts {
+    display: grid;
+    gap: 6px;
+    margin-top: 4px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(24, 169, 180, 0.14);
+    color: #42545d;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.35;
+    text-transform: none;
   }
 }
 

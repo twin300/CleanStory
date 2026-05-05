@@ -1,10 +1,18 @@
 const menuButton = document.querySelector(".menu-button");
 const mainNav = document.querySelector(".main-nav");
 const navPlaceholder = document.createComment("main-nav-placeholder");
+const mobileContactQuery = window.matchMedia("(max-width: 920px)");
 
 mainNav?.after(navPlaceholder);
 
-const mobileMenuQuery = window.matchMedia("(max-width: 920px)");
+const mobileMenuQuery = mobileContactQuery;
+
+document.querySelectorAll(".email-link").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (mobileContactQuery.matches) return;
+    event.preventDefault();
+  });
+});
 
 const updateMobileMenuTop = () => {
   const header = document.querySelector(".site-header");
