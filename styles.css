@@ -115,6 +115,7 @@ select {
 }
 
 .header-actions {
+  align-items: center;
   gap: 16px;
   white-space: nowrap;
   font-size: 13px;
@@ -124,6 +125,12 @@ select {
   display: grid;
   gap: 4px;
   justify-items: start;
+  line-height: 1.12;
+}
+
+.header-phones .phone {
+  display: block;
+  white-space: nowrap;
 }
 
 .city {
@@ -213,10 +220,10 @@ p {
 }
 
 h1 {
-  max-width: 560px;
+  max-width: 760px;
   margin-bottom: 0;
-  font-size: clamp(36px, 5.2vw, 58px);
-  line-height: 0.98;
+  font-size: clamp(34px, 4.7vw, 58px);
+  line-height: 1;
   font-weight: 650;
   letter-spacing: -0.02em;
 }
@@ -1667,6 +1674,7 @@ h3 {
   max-width: 100%;
   font-size: 22px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .footer-phone span {
@@ -1683,6 +1691,25 @@ h3 {
   font-size: 22px;
   font-weight: 800;
   white-space: nowrap;
+}
+
+@media (max-width: 1280px) and (min-width: 921px) {
+  .topbar {
+    gap: 18px;
+  }
+
+  .main-nav {
+    gap: 20px;
+  }
+
+  .header-actions {
+    gap: 12px;
+  }
+
+  .header-phones .phone,
+  .header-email {
+    font-size: 12px;
+  }
 }
 
 .footer-email {
