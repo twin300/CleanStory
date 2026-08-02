@@ -1,16 +1,15 @@
 <?php
-declare(strict_types=1);
 
 header('Content-Type: application/json; charset=utf-8');
 
-function send_json(int $statusCode, array $payload): void
+function send_json($statusCode, array $payload)
 {
     http_response_code($statusCode);
     echo json_encode($payload, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-function env_value(string $key): ?string
+function env_value($key)
 {
     if (defined($key) && trim((string) constant($key)) !== '') {
         return trim((string) constant($key));
@@ -33,15 +32,22 @@ function env_value(string $key): ?string
     return null;
 }
 
-function clean_text($value): string
+function clean_text($value)
 {
-    return trim(strip_tags((string) ($value ?? '')));
+    return trim(strip_tags((string) ($value === null ? '' : $value)));
 }
 
-$localConfigPath = __DIR__ . '/send-config.php';
+$configPaths = array(
+    __DIR__ . '/send-config.php',
+    dirname(__DIR__) . '/send-config.php',
+    dirname(__DIR__) . '/send-config',
+);
 
-if (is_file($localConfigPath)) {
-    require $localConfigPath;
+foreach ($configPaths as $configPath) {
+    if (is_file($configPath)) {
+        require $configPath;
+        break;
+    }
 }
 
 $token = env_value('TELEGRAM_BOT_TOKEN');
@@ -75,10 +81,10 @@ if (!is_array($data)) {
     send_json(400, ['message' => 'Некорректные данные заявки']);
 }
 
-$phone = clean_text($data['phone'] ?? '');
-$rooms = clean_text($data['rooms'] ?? '');
-$cleaningType = clean_text($data['cleaningType'] ?? '');
-$price = clean_text($data['price'] ?? '');
+$phone = clean_text(isset($data['phone']) ? $data['phone'] : '');
+$rooms = clean_text(isset($data['rooms']) ? $data['rooms'] : '');
+$cleaningType = clean_text(isset($data['cleaningType']) ? $data['cleaningType'] : '');
+$price = clean_text(isset($data['price']) ? $data['price'] : '');
 
 if (strlen(preg_replace('/\D+/', '', $phone)) < 10) {
     send_json(400, ['message' => 'Укажите номер телефона']);
@@ -134,10 +140,10 @@ if ($telegramResponse === false) {
 
 $telegramData = json_decode($telegramResponse, true);
 
-if (!is_array($telegramData) || ($telegramData['ok'] ?? false) !== true) {
+if (!is_array($telegramData) || !isset($telegramData['ok']) || $telegramData['ok'] !== true) {
     send_json(502, [
-        'message' => $telegramData['description'] ?? 'Telegram не принял заявку',
-        'code' => $telegramData['error_code'] ?? 502,
+        'message' => isset($telegramData['description']) ? $telegramData['description'] : 'Telegram не принял заявку',
+        'code' => isset($telegramData['error_code']) ? $telegramData['error_code'] : 502,
     ]);
 }
 
